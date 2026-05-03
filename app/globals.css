@@ -1,0 +1,102 @@
+/* ------------------------------ */
+/* MUST BE FIRST: Font Imports    */
+/* ------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ------------------------------ */
+/* Tailwind Import                */
+/* ------------------------------ */
+@import "tailwindcss";
+
+/* ------------------------------ */
+/* Your Global Styles            */
+/* ------------------------------ */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+
+/* ——————————————————————————————————————
+   3D DODECAHEDRON BACKGROUND FIX
+—————————————————————————————————————— */
+
+.mil-animation-frame {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mil-animation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: spin 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.mil-position-1 { transform: scale(2.3) translate(100px, -200px); }
+.mil-position-2 { transform: scale(1.7) translate(150px, -100px); }
+.mil-position-3 { transform: scale(1.1) translate(200px, 50px); }
+
+.mil-dodecahedron {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+}
+
+.mil-pentagon {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+}
+
+.mil-pentagon div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 140, 0, 0.12); /* orange-ish glow */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  clip-path: polygon(
+    50% 0%, 
+    100% 38%, 
+    81% 100%, 
+    19% 100%, 
+    0% 38%
+  );
+  transform-origin: center;
+}
+
+/* Rotating animation */
+@keyframes spin {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
